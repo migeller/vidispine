@@ -1,0 +1,3 @@
+requirements -
+
+requests(found at http://docs.python-requests.org/en/master/)
