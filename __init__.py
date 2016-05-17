@@ -9,4 +9,5 @@ __title__='vidispine'
 __author__='Pete Lambro'
 __copyright__='Copyright 2016 Pete Lambro'
 
-from .items import VSItem
+from .items import *
+from .storages import *

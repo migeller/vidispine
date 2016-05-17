@@ -10,10 +10,14 @@ import requests
 import xml.etree.ElementTree as ET
 
 class vsStorage(object):
-	def __init__(self, storage_id, vs_url, vs_auth):
+	def __init__(self, storage_id):
 		self.storage_id = storage_id
 		
-	def forceRescan(self): #forces rescan of items in the storage
+	def forceRescan(self): 
+		#forces rescan of items in the storage
+		global vs_url
+		global vs_auth
+		global vs_headers
 		r = requests.post(vs_url+'/API/'+self.storage_id+'/rescan',auth=vs_auth,headers=vs_headers)
 		if str(r) == '<Response [200]>':
 			return True
@@ -21,6 +25,9 @@ class vsStorage(object):
 			return False
 
 	def getFileList(self, count=100): 
-	#returns xml as string of files on storage, up to count 
+		#returns xml as string of files on storage, up to count 
+		global vs_url
+		global vs_auth
+		global vs_headers
 		r = requests.get(vs_url+':8080/API/storage/'+self.storage_id+'/file?count='+count,auth=vs_auth,headers=vs_headers)
 		return r.text
