@@ -25,7 +25,7 @@ class vsItem(vsDB):
 		r = requests.get(self.vs_url+'/API/item/'+self.item_id+'/?content=shape',auth=self.vs_auth)
 		return r
 
-	def valueFind(self,vs_field):
+	def findValue(self,vs_field):
 		mdTree = ET.fromstring(self.metadata.text)
 		ns = {'vs':'http://xml.vidispine.com/schema/vidispine'}
 		mdRaw = mdTree.find('vs:metadata',ns)
