@@ -44,7 +44,7 @@ class vsItem(vsDB):
 			try:
 				field = fields.next()
 			except StopIteration:
-				return 'postingest' #or other default user
+				return 'admin' #or other default user
 				submitterFound = True
 			if field.attrib['user'] != 'system' and field.attrib['user'] != 'admin':
 				return field.attrib['user']
@@ -66,4 +66,8 @@ class vsStorage(vsDB):
 	def getFileList(self, count='100'): 
 		#returns xml as string of files on storage, up to count 
 		r = requests.get(self.vs_url+'/API/storage/'+self.storage_id+'/file?count='+count,auth=self.vs_auth,headers=self.vs_headers)
+		return r.text
+
+	def findImportable(self):
+		r = requests.get(self.vs_url+'/API/storage/'+self.storage_id+'/importable',auth=self.vs_auth,headers=self.vs_headers)
 		return r.text
