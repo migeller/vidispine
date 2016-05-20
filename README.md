@@ -36,4 +36,6 @@ Methods:
 
 forceRescan() - forces a rescan of the storage
 
-getFileList(optional count=['num']) - returns a requests object of the list of files on a storage, default count is 100.
+getFileList(*optional count=['num']*) - returns an xml string of the list of files on a storage, default count is 100.
+
+findImportable() - returns an xml string of all importable files on a storage
